@@ -9,7 +9,7 @@ use DataDog\OriginDetection;
  **/
 
 class DogStatsd
-{
+{    
     // phpcs:disable
     const OK        = 0;
     const WARNING   = 1;
@@ -78,6 +78,7 @@ class DogStatsd
      * host,
      * port,
      * socket_path,
+     * cardinality,
      * datadog_host,
      * global_tags,
      * decimal_precision,
@@ -85,14 +86,15 @@ class DogStatsd
      * disable_telemetry
      *
      * @param array{
-     *     host: string,
-     *     port: int,
-     *     socket_path: string,
-     *     datadog_host: string,
-     *     global_tags: string[],
-     *     decimal_precision: int,
-     *     metric_prefix: string,
-     *     disable_telemetry: bool
+     *     host?: string,
+     *     port?: int,
+     *     socket_path?: string,
+     *     cardinality?: "none"|"low"|"orchestrator"|"high",
+     *     datadog_host?: string,
+     *     global_tags?: string[],
+     *     decimal_precision?: int,
+     *     metric_prefix?: string,
+     *     disable_telemetry?: bool
      * } $config
      */
     public function __construct(array $config = array())
